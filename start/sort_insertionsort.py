@@ -3,13 +3,13 @@ import bisect
 from random import choices
 
 
-def randomize_inputs(arr: IntList):
+def randomize(arr: IntList):
     length: int = len(arr)
     return choices(arr, k=length)
 
 
-def sort_inputs_by(func_name, arr: IntList):
-    return func_name(arr)
+def sort_inputs(func, arr: IntList):
+    return func(arr)
 
 
 # O(n²) typically
@@ -21,6 +21,7 @@ def insertion_sort(arr: IntList):
 
     # I know the names I used here might be a little confusing to you,
     # Umm.. sorry!
+    idx_add1: int
     for idx_add1 in range(1, len(arr)):
         val_adi1 = arr[idx_add1]
         idx_orig = idx_add1 - 1
@@ -29,21 +30,44 @@ def insertion_sort(arr: IntList):
             arr[idx_orig] = val_adi1
             idx_orig = idx_orig - 1
     return arr
-    pass
 
 
 # O(n²) typically
-def insertion_sort_bisect(arr: IntList):
-    pass
+def insertion_sort_bis(arr: IntList):
+    """Same logic, compare the current with previous one,
+    but using the built-in binary search algorithm :)
+    """
+    idx: int
+    for idx in range(1, len(arr)):
+        bisect.insort(arr, arr.pop(idx), 0, idx)
 
 
 # O(n²) typically
-def insertion_sort_binsearch(arr: IntList):
-    pass
+def insertion_sort_bin(arr: IntList):
+    idx: int
+    for idx in range(1, len(arr)):
+        key = arr[idx]
+        low, high = 0, idx
+        while high > low:
+            mid = (low + high) // 2
+            if arr[mid] < key:
+                low = mid + 1
+            else:
+                high = mid
+        arr[:] = arr[:low] + [key] + arr[low:idx] + arr[idx + 1 :]
 
 
 if __name__ == "__main__":
     inputs: IntList = [6, 7, 8, 3, 4, 5]
     sorted_inputs: IntList = [3, 4, 5, 6, 7, 8]
 
-    assert sort_inputs_by(insertion_sort, arr=inputs) == sorted_inputs
+    randomize(inputs)
+    assert sort_inputs(func=insertion_sort, arr=inputs) == sorted_inputs
+
+    randomize(inputs)
+    sort_inputs(func=insertion_sort_bis, arr=inputs)
+    assert inputs == sorted_inputs
+
+    randomize(inputs)
+    sort_inputs(func=insertion_sort_bin, arr=inputs)
+    assert inputs == sorted_inputs
