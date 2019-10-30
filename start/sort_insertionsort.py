@@ -4,7 +4,7 @@ from utils import randomize, sort_inplace
 
 
 # O(n²) typically
-def insertion_sort(arr: IntList):
+def insertion_sort(arr: IntList) -> IntList:
     """The speed of this algorithm is also not that good as well,
     the only thing this algo does is compare the current element with
     the previous elem, then decide swap them or not (I thought it's hard..).
@@ -24,7 +24,7 @@ def insertion_sort(arr: IntList):
 
 
 # O(n²) typically
-def insertion_sort_bis(arr: IntList):
+def insertion_sort_bis(arr: IntList) -> None:
     """Same logic, compare the current with previous one,
     but using the built-in binary search algorithm :)
     """
@@ -34,7 +34,7 @@ def insertion_sort_bis(arr: IntList):
 
 
 # O(n²) typically
-def insertion_sort_bin(arr: IntList):
+def insertion_sort_bin(arr: IntList) -> None:
     idx: int
     for idx in range(1, len(arr)):
         key = arr[idx]
