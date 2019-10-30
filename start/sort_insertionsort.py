@@ -1,15 +1,6 @@
 from annotated_types import IntList
 import bisect
-from random import choices
-
-
-def randomize(arr: IntList):
-    length: int = len(arr)
-    return choices(arr, k=length)
-
-
-def sort_inputs(func, arr: IntList):
-    return func(arr)
+from utils import randomize, sort_inputs
 
 
 # O(n²) typically
