@@ -7,5 +7,5 @@ def randomize(arr: IntList):
     return choices(arr, k=length)
 
 
-def sort_inputs(func, arr: IntList):
+def sort_inplace(func, arr: IntList):
     return func(arr)

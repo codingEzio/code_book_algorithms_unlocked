@@ -1,6 +1,6 @@
 from annotated_types import IntList
 import bisect
-from utils import randomize, sort_inputs
+from utils import randomize, sort_inplace
 
 
 # O(n²) typically
@@ -53,12 +53,12 @@ if __name__ == "__main__":
     sorted_inputs: IntList = [3, 4, 5, 6, 7, 8]
 
     randomize(inputs)
-    assert sort_inputs(func=insertion_sort, arr=inputs) == sorted_inputs
+    assert insertion_sort(arr=inputs) == sorted_inputs
 
     randomize(inputs)
-    sort_inputs(func=insertion_sort_bis, arr=inputs)
+    sort_inplace(func=insertion_sort_bis, arr=inputs)
     assert inputs == sorted_inputs
 
     randomize(inputs)
-    sort_inputs(func=insertion_sort_bin, arr=inputs)
+    sort_inplace(func=insertion_sort_bin, arr=inputs)
     assert inputs == sorted_inputs
