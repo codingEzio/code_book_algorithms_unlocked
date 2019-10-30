@@ -1,9 +1,15 @@
 from heapq import merge
+from collections import deque
+
+from typing import Deque, Union
 from annotated_types import IntList
 from utils import randomize
 
 
 def _merge(left: IntList, right: IntList) -> IntList:
+    """Native `merge` implementation, used for the recursive
+    version of merge sort.
+    """
     result: IntList = []
 
     left_idx: int
@@ -25,20 +31,17 @@ def _merge(left: IntList, right: IntList) -> IntList:
     return result
 
 
-def merge_sort_native(arr: IntList) -> IntList:
-    """Merge sort based on native `merge` implementation.
+def __merge(X: Union[IntList, Deque], Y: Union[IntList, Deque]) -> IntList:
+    """Native `merge` implementation, used for the non-recursive
+    version of merge sort.
     """
-    if len(arr) <= 1:
-        return arr
-
-    mid: int = len(arr) // 2
-    left: IntList = arr[:mid]
-    right: IntList = arr[mid:]
-
-    left = merge_sort_native(left)
-    right = merge_sort_native(right)
-
-    return list(_merge(left, right))
+    X, Y, Z = deque(X), deque(Y), []
+    while len(X) > 0 and len(Y) > 0:
+        if X[0] < Y[0]:
+            Z.append(X.popleft())
+        else:
+            Z.append(Y.popleft())
+    return Z + list(X) + list(Y)
 
 
 def merge_sort_heapq(arr: IntList) -> IntList:
@@ -57,6 +60,40 @@ def merge_sort_heapq(arr: IntList) -> IntList:
     return list(merge(left_arr, right_arr))
 
 
+def merge_sort_native(arr: IntList) -> IntList:
+    """Merge sort based on native `merge` implementation.
+    """
+    if len(arr) <= 1:
+        return arr
+
+    mid: int = len(arr) // 2
+    left: IntList = arr[:mid]
+    right: IntList = arr[mid:]
+
+    left = merge_sort_native(left)
+    right = merge_sort_native(right)
+
+    return list(_merge(left, right))
+
+
+def merge_sort_no_recursion(arr: IntList) -> IntList:
+    """A non-recursive version of merge sort (hell yeah!).
+    References (first time know this -> intro -> implementation)
+    1. https://stackoverflow.com/questions/1557894/non-recursive-merge-sort/#1557919
+    2. https://www.algorithmist.com/index.php/Merge_sort#Bottom-up_merge_sort
+    3. https://www.quora.com/What-is-the-difference-between-top-down-merge-sort-and-bottom-up-merge-sort
+    """
+    if len(arr) <= 1:
+        return list(arr)
+    Q = deque([elem] for elem in arr)
+    while True:
+        X = Q.popleft()
+        if len(Q) == 0:
+            return X
+        Y = Q.popleft()
+        Q.append(__merge(X, Y))
+
+
 if __name__ == "__main__":
     inputs: IntList = [6, 7, 8, 4, 5]
     sorted_inputs: IntList = [4, 5, 6, 7, 8]
@@ -66,3 +103,6 @@ if __name__ == "__main__":
 
     randomize(inputs)
     assert merge_sort_native(inputs) == sorted_inputs
+
+    randomize(inputs)
+    assert merge_sort_no_recursion(inputs) == sorted_inputs
