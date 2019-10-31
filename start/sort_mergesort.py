@@ -11,6 +11,7 @@ def _merge(left: IntList, right: IntList) -> IntList:
     version of merge sort.
     """
     result: IntList = []
+    print(f"I'm in merge -- {result}")
 
     left_idx: int
     right_idx: int
@@ -28,6 +29,7 @@ def _merge(left: IntList, right: IntList) -> IntList:
     if right_idx < len(right):
         result.extend(right[right_idx:])
 
+    print(f"I'm out merge -- {result} (actually the end)\n")
     return result
 
 
@@ -70,9 +72,12 @@ def merge_sort_native(arr: IntList) -> IntList:
     left: IntList = arr[:mid]
     right: IntList = arr[mid:]
 
+    print(f"I'm in main sort LEFT -- {left}")
+    print(f"I'm in main sort RIGHT -- {right}")
     left = merge_sort_native(left)
     right = merge_sort_native(right)
 
+    print(f"I'm out main sort -- {left}, {right} (head to merge!)")
     return list(_merge(left, right))
 
 
@@ -95,8 +100,11 @@ def merge_sort_no_recursion(arr: IntList) -> IntList:
 
 
 if __name__ == "__main__":
-    inputs: IntList = [6, 7, 8, 4, 5]
-    sorted_inputs: IntList = [4, 5, 6, 7, 8]
+    inputs: IntList = [6, 7, 8, 4, 5, 2, 3]
+    sorted_inputs: IntList = [2, 3, 4, 5, 6, 7, 8]
+
+    # The recursive part is best explained here
+    # https://stackoverflow.com/questions/10502533/explanation-of-merge-sort-for-dummies/#10503273
 
     randomize(inputs)
     assert merge_sort_heapq(inputs) == sorted_inputs
