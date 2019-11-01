@@ -66,6 +66,24 @@ def quick_sort_list_comp(arr: IntList) -> IntList:
             + quick_sort_list_comp(more)
 
 
+def quick_sort_kinda_neat(arr: IntList) -> IntList:
+    """Yet another implementation of quick sort.
+    Kinda neat but a bit more confusing, especially about the `less` and
+    the `more` part, I do need to dig this in later.
+    """
+    if len(arr) < 2:
+        return arr
+
+    head: int
+    tail: IntList
+    head, *tail = arr
+
+    less = quick_sort_kinda_neat([i for i in tail if i < head])
+    more = quick_sort_kinda_neat([i for i in tail if i >= head])
+
+    return less + [head] + more
+
+
 if __name__ == "__main__":
     inputs: IntList = [6, 9, 7, 8, 4, 5, 10]
     sorted_inputs: IntList = [4, 5, 6, 7, 8, 9, 10]
@@ -78,3 +96,6 @@ if __name__ == "__main__":
 
     randomize(inputs)
     assert quick_sort_list_comp(inputs) == sorted_inputs
+
+    randomize(inputs)
+    assert quick_sort_kinda_neat(inputs) == sorted_inputs
