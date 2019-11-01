@@ -1,34 +1,69 @@
+from random import choice as pick_random_one
 
 from annotated_types import IntList
 from utils import randomize
 
 
 def quick_sort(arr: IntList) -> IntList:
+    """An implementation of quick sort algorithm.
+    """
     less: IntList = []
-    pivotList: IntList = []
     more: IntList = []
+    pivotList: IntList = []
 
     if len(arr) <= 1:
-        print(f"[in len(arr)] 🧐 {arr}")
         return arr
     else:
-        pivot: int = arr[len(arr) // 2]
-        # pivot: int = arr[0]
+        pivot: int = arr[0]
         for i in arr:
-            print('\n[Start iteration 🍰]')
             if i < pivot:
                 less.append(i)
-                print(f'[in loop LESS] 1️⃣ {less} 2️⃣ {more} 3️⃣ {pivotList}')
             elif i > pivot:
                 more.append(i)
-                print(f'[in loop MORE] 1️⃣ {less} 2️⃣ {more} 3️⃣ {pivotList}')
             else:
                 pivotList.append(i)
-                print(f'[in loop PIVO] 1️⃣ {less} 2️⃣ {more} 3️⃣ {pivotList}')
 
         less = quick_sort(less)
         more = quick_sort(more)
         return less + pivotList + more
+
+
+def quick_sort_rand_pivot(arr: IntList) -> IntList:
+    """An implementation of quick sort algorithm.
+    This one is a bit different from the 1st one, one of them is that
+    the pivot we chosed might be a bit better than the direct `arr[0]`.
+    """
+    if len(arr) <= 1:
+        return arr
+    else:
+        more: IntList = []
+        less: IntList = []
+        pivot: int = pick_random_one(arr)
+
+        for i in arr:
+            if i < pivot:
+                less.append(i)
+            if i > pivot:
+                more.append(i)
+        less = quick_sort_rand_pivot(less)
+        more = quick_sort_rand_pivot(more)
+
+        return less + [pivot] * arr.count(pivot) + more
+
+
+def quick_sort_list_comp(arr: IntList) -> IntList:
+    """An implementation of quick sort algorithm using list comprehensions.
+    """
+    if not arr:
+        return []
+    else:
+        pivot: int = arr[0]
+        less = [x for x in arr if x < pivot]
+        more = [x for x in arr[1:] if x >= pivot]
+
+        return quick_sort_list_comp(less) \
+            + [pivot] \
+            + quick_sort_list_comp(more)
 
 
 if __name__ == "__main__":
@@ -37,3 +72,9 @@ if __name__ == "__main__":
 
     randomize(inputs)
     assert quick_sort(inputs) == sorted_inputs
+
+    randomize(inputs)
+    assert quick_sort_rand_pivot(inputs) == sorted_inputs
+
+    randomize(inputs)
+    assert quick_sort_list_comp(inputs) == sorted_inputs
