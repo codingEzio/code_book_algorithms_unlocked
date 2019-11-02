@@ -7,7 +7,7 @@ verify_ssl = true
 flake8 = "==3.7.8"
 black = "==19.3b0"
 mypy = "==0.740"
-rope = "==0.14.0"
+MonkeyType = "==19.5.0"
 
 [packages]
 jupyter = "==1.0.0"
