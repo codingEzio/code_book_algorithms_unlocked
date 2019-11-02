@@ -1,6 +1,3 @@
-from math import abs
-
-
 def factorial_recur(n: int) -> int:
     if n == 0 or n == 1:
         return 1
@@ -14,9 +11,14 @@ def digit_sum(n: int) -> int:
     if n == 0:
         return 0
     elif n < 0:
-        return abs(n)
-    else:
-        return n % 10 + digit_sum(n // 10)
+        return -1
+    elif n > 0:
+        pass
+
+    r = 0
+    while n:
+        r, n = r + n % 10, n // 10
+    return r
 
 
 if __name__ == "__main__":
