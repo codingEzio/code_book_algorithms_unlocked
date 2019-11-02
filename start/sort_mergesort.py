@@ -1,9 +1,9 @@
 from heapq import merge
 from collections import deque
-
 from typing import Deque, Union
-from annotated_types import IntList
-from utils import randomize
+
+from src.annotated_types import IntList
+from src.test_utils import randomize
 
 
 def _merge(left: IntList, right: IntList) -> IntList:

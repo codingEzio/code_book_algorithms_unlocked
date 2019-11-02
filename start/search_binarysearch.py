@@ -1,4 +1,4 @@
-from annotated_types import IntList
+from src.annotated_types import IntList
 
 
 # O(lg n) for sorted array

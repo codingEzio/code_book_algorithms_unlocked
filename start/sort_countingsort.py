@@ -1,7 +1,7 @@
 from collections import defaultdict
 
-from annotated_types import IntList
-from utils import randomize
+from src.annotated_types import IntList
+from src.test_utils import randomize
 
 
 def counting_sort(arr: IntList, min_el: int, max_el: int) -> IntList:
@@ -28,8 +28,7 @@ if __name__ == "__main__":
     sorted_inputs: IntList = [4, 5, 6, 7, 8, 9, 10]
 
     randomize(inputs)
-    min_el, max_el = min(inputs), max(inputs)
     assert (
-        counting_sort(arr=inputs, min_el=min_el, max_el=max_el)
+        counting_sort(arr=inputs, min_el=min(inputs), max_el=max(inputs))
         == sorted_inputs
     )

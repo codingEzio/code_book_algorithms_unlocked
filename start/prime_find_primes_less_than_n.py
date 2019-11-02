@@ -2,7 +2,7 @@
 This is an implementation based the ancient algorithm for finding
 all prime numbers up to any given limit (aka. Sieve of Eratosthenes).
 """
-from annotated_types import IntList, BoolList
+from src.annotated_types import IntList, BoolList
 
 
 def get_primes(n: int) -> IntList:
@@ -12,10 +12,11 @@ def get_primes(n: int) -> IntList:
     if n <= 0:
         raise ValueError("'n' must be a positive integer.")
 
+    sieve_size: int
     if n % 2 == 0:
-        sieve_size: int = n // 2 - 1
+        sieve_size = n // 2 - 1
     else:
-        sieve_size: int = n // 2
+        sieve_size = n // 2
 
     sieve: BoolList = [True for _ in range(sieve_size)]
     prime_list: IntList = []

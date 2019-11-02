@@ -1,6 +1,7 @@
-from annotated_types import IntList
 import bisect
-from utils import randomize, sort_inplace
+
+from src.annotated_types import IntList
+from src.test_utils import randomize, sort_inplace
 
 
 # O(n²) typically
@@ -45,7 +46,7 @@ def insertion_sort_bin(arr: IntList) -> None:
                 low = mid + 1
             else:
                 high = mid
-        arr[:] = arr[:low] + [key] + arr[low:idx] + arr[idx + 1 :]
+        arr[:] = arr[:low] + [key] + arr[low:idx] + arr[idx + 1:]
 
 
 if __name__ == "__main__":

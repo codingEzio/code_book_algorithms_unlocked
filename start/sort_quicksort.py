@@ -1,7 +1,7 @@
 from random import choice as pick_random_one
 
-from annotated_types import IntList
-from utils import randomize
+from src.annotated_types import IntList
+from src.test_utils import randomize
 
 
 def quick_sort(arr: IntList) -> IntList:
@@ -62,8 +62,8 @@ def quick_sort_list_comp(arr: IntList) -> IntList:
         more = [x for x in arr[1:] if x >= pivot]
 
         return quick_sort_list_comp(less) \
-            + [pivot] \
-            + quick_sort_list_comp(more)
+               + [pivot] \
+               + quick_sort_list_comp(more)
 
 
 def quick_sort_kinda_neat(arr: IntList) -> IntList:
