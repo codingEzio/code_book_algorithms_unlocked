@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from src.annotated_types import IntList
+from src.annotated_types import IntList, CountIntegerAppearTimes
 from src.test_utils import randomize
 
 
@@ -12,11 +12,11 @@ def counting_sort(arr: IntList, min_el: int, max_el: int) -> IntList:
     As its name suggests, each of the element was given an 'count',
     for the duplicated ones, it simply do "*" on it.
     """
-    count = defaultdict(int)
+    count: CountIntegerAppearTimes = defaultdict(int)
     for i in arr:
         count[i] += 1
 
-    result = []
+    result: IntList = []
     for j in range(min_el, max_el + 1):
         result += [j] * count[j]
 

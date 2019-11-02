@@ -6,5 +6,7 @@ Function = Callable
 # https://stackoverflow.com/a/39826915/6273859
 CouldBeString = Optional[str]
 
+CountIntegerAppearTimes = DefaultDict[int, int]
+
 BoolList = List[bool]
 IntList = List[int]
