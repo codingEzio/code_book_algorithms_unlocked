@@ -10,4 +10,6 @@ CouldBeInteger = Optional[int]
 CountIntegerAppearTimes = DefaultDict[int, int]
 
 BoolList = List[bool]
+
 IntList = List[int]
+NestedIntList = List[List[int]]
