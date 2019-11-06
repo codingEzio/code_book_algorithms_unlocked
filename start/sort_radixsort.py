@@ -4,12 +4,15 @@ from src.test_utils import randomize
 
 # util functions for `radix_sort_2nd`.
 def radix_get_length(value: int) -> int:
-    """# Returns the length, in number of digits, of value
+    """Returns the length, in number of digits, of value
+    e.g. For 34, it returns 2.
     """
+    digit: int
+
     if value == 0:
         return 1
 
-    digits: int = 0
+    digits = 0
     while value != 0:
         digits += 1
         value //= 10
@@ -20,12 +23,16 @@ def radix_get_length(value: int) -> int:
 # util functions for `radix_sort_2nd`.
 def radix_get_max_length(numbers: IntList) -> int:
     """Returns the maximum length, in number of digits, out of all list elements
+    e.g. For [30, 9, 111], it returns 3 (aka. 111).
     """
-    max_digits: int = 0
+    max_digits: int
     num: int
+    digit_count: int
+
+    max_digits = 0
 
     for num in numbers:
-        digit_count: int = radix_get_length(num)
+        digit_count = radix_get_length(num)
         if digit_count > max_digits:
             max_digits = digit_count
 
@@ -33,19 +40,24 @@ def radix_get_max_length(numbers: IntList) -> int:
 
 
 # https://derka.space/RefrencePage/DataStructuresZy/SortingAlgorithms/Python_RadixSort/SortingAlgorithms_Python_RadixSort_s14.php
+# O(n²)
 def radix_sort_2nd(numbers: IntList) -> IntList:
-    """Yet another implementation on radix sort.
+    """Yet another implementation on radix sort (more understandable IMHO).
     """
-    buckets: NestedIntList
+    pow_10: int
     max_digits: int
     num: int
-    pow_10: int = 1
     bucket_index: int
     bucket: IntList
+    buckets: NestedIntList
     negatives: IntList
     non_negatives: IntList
 
-    buckets = [[] * 10]
+    buckets = []
+    for _ in range(10):
+        buckets.append([])
+
+    pow_10 = 1
     max_digits = radix_get_max_length(numbers)
 
     for digit_index in range(max_digits):
@@ -77,6 +89,7 @@ def radix_sort_2nd(numbers: IntList) -> IntList:
 
 
 # http://qaru.site/questions/15331230/radix-sort-python-string
+# O(n²)
 def radix_sort(arr: IntList, base=10):
     """A simple implementation of radix sort (order: DESC).
     """
@@ -109,8 +122,12 @@ def radix_sort(arr: IntList, base=10):
 
 
 if __name__ == "__main__":
-    inputs: IntList = [6, 9, 7, 8, 4, 5, 10]
-    sorted_inputs: IntList = [4, 5, 6, 7, 8, 9, 10]
+    inputs: IntList = [63, 931, 7, 18, 4, 5, 10]
+    sorted_inputs: IntList = [4, 5, 7, 10, 18, 63, 931]
 
     randomize(inputs)
     assert radix_sort(inputs) == sorted_inputs
+
+    randomize(inputs)
+    radix_sort_2nd(inputs)
+    assert inputs == sorted_inputs
