@@ -1,7 +1,7 @@
 import bisect
 
-from src.annotated_types import IntList
-from src.test_utils import randomize, sort_inplace
+from utils.annotated_types import IntList
+from utils.input_opts import randomize, sort_inplace
 
 
 # O(n²) typically

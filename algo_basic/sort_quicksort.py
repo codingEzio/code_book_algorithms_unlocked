@@ -1,7 +1,7 @@
 from random import choice as pick_random_one
 
-from src.annotated_types import IntList
-from src.test_utils import randomize
+from utils.annotated_types import IntList
+from utils.input_opts import randomize
 
 
 def quick_sort(arr: IntList) -> IntList:

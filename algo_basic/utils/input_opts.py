@@ -1,5 +1,5 @@
 from random import shuffle
-from .annotated_types import IntList, Function
+from utils.annotated_types import IntList, Function
 
 
 def randomize(arr: IntList) -> None:

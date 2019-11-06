@@ -1,7 +1,7 @@
 from collections import defaultdict
 
-from src.annotated_types import IntList, CountIntegerAppearTimes
-from src.test_utils import randomize
+from utils.annotated_types import IntList, CountIntegerAppearTimes
+from utils.input_opts import randomize
 
 
 def counting_sort(arr: IntList, min_el: int, max_el: int) -> IntList:

@@ -9,7 +9,8 @@ CouldBeInteger = Optional[int]
 
 CountIntegerAppearTimes = DefaultDict[int, int]
 
+StringList = List[str]
 BoolList = List[bool]
-
 IntList = List[int]
+
 NestedIntList = List[List[int]]

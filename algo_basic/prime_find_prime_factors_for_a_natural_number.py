@@ -1,4 +1,4 @@
-from annotated_types import IntList
+from utils.annotated_types import IntList
 
 
 def trial_division(n: int) -> IntList:

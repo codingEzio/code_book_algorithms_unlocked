@@ -1,4 +1,4 @@
-from src.annotated_types import IntList
+from utils.annotated_types import IntList
 
 
 # O(n) whatever it has been sorted or not

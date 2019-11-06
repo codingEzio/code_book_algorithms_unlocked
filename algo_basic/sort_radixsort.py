@@ -1,5 +1,5 @@
-from src.annotated_types import IntList, NestedIntList
-from src.test_utils import randomize
+from utils.annotated_types import IntList, NestedIntList
+from utils.input_opts import randomize
 
 
 # util functions for `radix_sort_2nd`.
