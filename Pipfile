@@ -6,12 +6,15 @@ verify_ssl = true
 [dev-packages]
 flake8 = "==3.7.8"
 black = "==19.3b0"
-mypy = "==0.740"
-MonkeyType = "==19.5.0"
 
 [packages]
 jupyter = "==1.0.0"
 ipython = "==7.8.0"
+mypy = "==0.740"
+MonkeyType = "==19.5.0"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
