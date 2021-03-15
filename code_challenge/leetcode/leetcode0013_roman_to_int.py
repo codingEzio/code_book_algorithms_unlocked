@@ -27,4 +27,4 @@ def roman_to_int(roman_num: str) -> int:
     return output
 
 
-print(roman_to_int("MVIVI"))
+assert roman_to_int("MVIVI") == 1011
