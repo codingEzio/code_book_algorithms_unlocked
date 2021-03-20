@@ -1,3 +1,6 @@
+# Status
+#   solved by myself        : no
+#   submitted to leetcode   : no
 from typing import List, Union
 
 

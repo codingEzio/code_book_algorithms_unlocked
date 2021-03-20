@@ -1,3 +1,6 @@
+# Status
+#   solved by myself        : no
+#   submitted to leetcode   : no
 from typing import Dict
 
 roman2int: Dict[str, int] = {
