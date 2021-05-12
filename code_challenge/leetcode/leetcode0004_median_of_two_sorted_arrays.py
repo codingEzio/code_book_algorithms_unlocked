@@ -5,15 +5,10 @@
 #   experiment
 #       self-contained (stdlib) : \
 #       runnable locally        : \
+from typing import List
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
-def add_two_nums(l1: ListNode, l2: ListNode) -> ListNode:
+def find_median_sorted_arrays(nums1: List[int], nums2: List[int]) -> float:
     pass
 
 

@@ -7,13 +7,7 @@
 #       runnable locally        : \
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
-def add_two_nums(l1: ListNode, l2: ListNode) -> ListNode:
+def length_of_longest_substring(s: str) -> int:
     pass
 
 
