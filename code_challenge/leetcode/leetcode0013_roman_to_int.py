@@ -1,6 +1,10 @@
 # Status
-#   solved by myself        : no
-#   submitted to leetcode   : no
+#   core
+#       solved by myself        : not yet
+#       submitted to leetcode   : not yet
+#   experiment
+#       self-contained (stdlib) : yes
+#       runnable locally        : yes
 from typing import Dict
 
 roman2int: Dict[str, int] = {

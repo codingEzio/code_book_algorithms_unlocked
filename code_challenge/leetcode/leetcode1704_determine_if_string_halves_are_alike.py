@@ -1,6 +1,10 @@
 # Status
-#   solved by myself        : yes
-#   submitted to leetcode   : yes
+#   core
+#       solved by myself        : yes
+#       submitted to leetcode   : yes
+#   experiment
+#       self-contained (stdlib) : yes
+#       runnable locally        : yes
 
 
 def halves_are_alike(s: str) -> bool:

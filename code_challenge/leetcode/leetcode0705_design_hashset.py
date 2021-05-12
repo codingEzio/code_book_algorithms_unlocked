@@ -1,6 +1,10 @@
 # Status
-#   solved by myself        : kind of
-#   submitted to leetcode   : yes
+#   core
+#       solved by myself        : kind of
+#       submitted to leetcode   : yes
+#   experiment
+#       self-contained (stdlib) : yes
+#       runnable locally        : not yet
 
 
 class HashSet:
