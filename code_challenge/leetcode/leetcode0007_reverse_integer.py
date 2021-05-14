@@ -28,7 +28,12 @@ def reverse_integer(num):
     return reversed_num if not negative else -reversed_num
 
 
-reverse_integer(-123) == -321
-reverse_integer(321) == 123
-reverse_integer(0) == 0
-reverse_integer(MAXINT) == 0
+def main():
+    assert reverse_integer(-123) == -321
+    assert reverse_integer(321) == 123
+    assert reverse_integer(0) == 0
+    assert reverse_integer(MAXINT) == 0
+
+
+if "__main__" == __name__:
+    main()
