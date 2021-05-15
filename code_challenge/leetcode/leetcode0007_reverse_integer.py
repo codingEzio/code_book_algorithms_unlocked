@@ -1,38 +1,39 @@
 # Status
 #   core
-#       solved by myself        : not yet
-#       submitted to leetcode   : not yet
+#       solved by myself        : yes
+#       submitted to leetcode   : yes
 #   experiment
 #       self-contained (stdlib) : yes
 #       runnable locally        : yes
-from sys import maxsize as MAXINT
 
 
-def reverse_integer(num):
-    """
-    For  321, it should return  123
-    For -321, it should return -123
-    """
-    negative = num < 0
-    num = abs(num)
-    reversed_num = 0
-
-    while num != 0:
-        reversed_num = reversed_num * 10 + num % 10
-        num = num // 10
-
-    # Required for leetcode. Doesn't matter for Python itself.
-    if reversed_num >= MAXINT - 1:
+def check_overflow(x):
+    if (-(2 ** 32) <= x <= 2 ** 32 + 1) is False:
         return 0
+    else:
+        return x
 
-    return reversed_num if not negative else -reversed_num
+
+def reverse_integer(x):
+    x_as_str_reversed = str(x)[::-1]
+
+    if x_as_str_reversed[-1] == "-":
+        x_as_str_reversed = "%s%s" % (
+            x_as_str_reversed[-1],
+            x_as_str_reversed[0:-1],
+        )
+
+    x_as_int_reversed = int(x_as_str_reversed)
+
+    return check_overflow(x_as_int_reversed)
 
 
 def main():
     assert reverse_integer(-123) == -321
     assert reverse_integer(321) == 123
+    assert reverse_integer(10) == 1
     assert reverse_integer(0) == 0
-    assert reverse_integer(MAXINT) == 0
+    assert reverse_integer(1534236469) == 0
 
 
 if "__main__" == __name__:
