@@ -7,7 +7,7 @@
 #       runnable locally        : \
 
 
-def roman_to_int(num):
+def zigzag_conversion(s, num_rows):
     pass
 
 

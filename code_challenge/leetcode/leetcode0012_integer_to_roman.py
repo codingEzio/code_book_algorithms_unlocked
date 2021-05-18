@@ -7,7 +7,7 @@
 #       runnable locally        : \
 
 
-def roman_to_int(num):
+def int_to_roman(num):
     pass
 
 
