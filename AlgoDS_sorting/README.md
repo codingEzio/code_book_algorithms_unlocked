@@ -1,14 +1,14 @@
 
 ### Common Sort Algorithms
 
-- [x] Selection Sort
+- [ ] Selection Sort
 - [ ] Bubble Sort
-- [x] Insertion Sort
-- [x] Merge Sort
-- [x] Quick Sort
+- [ ] Insertion Sort
+- [ ] Merge Sort
+- [ ] Quick Sort
 - [ ] Heap Sort
-- [x] Counting Sort
-- [x] Radix Sort
+- [ ] Counting Sort
+- [ ] Radix Sort
 - [ ] Bucket Sort
 
 ### HOWTO - profiling
